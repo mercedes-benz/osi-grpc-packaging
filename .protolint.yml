@@ -1,0 +1,13 @@
+---
+lint:
+  rules:
+    remove:
+      - REPEATED_FIELD_NAMES_PLURALIZED
+  rules_option:
+    enum_field_names_zero_value_end_with:
+      suffix: UNKNOWN
+    indent:
+      style: 4
+    max_line_length:
+      max_chars: 120
+      tab_chars: 4
