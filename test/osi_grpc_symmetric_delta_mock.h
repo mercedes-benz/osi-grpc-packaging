@@ -27,8 +27,8 @@ class SymmetricDeltaClientMock {
 
   auto SymmetricDelta() -> bool {
     auto context = grpc::ClientContext{};
-    auto request = osi3::Streaming{};
-    auto response = google::protobuf::Empty{};
+    auto request = google::protobuf::Empty{};
+    auto response = osi3::Streaming{};
 
     auto status = stub_->SymmetricDelta(&context, request, &response);
     return status.ok();
@@ -41,6 +41,6 @@ class SymmetricDeltaClientMock {
 class SymmetricDeltaServerMock final : public osi3::grpc::SymmetricDelta::Service {
  public:
   MOCK_METHOD(grpc::Status, SymmetricDelta,
-              (grpc::ServerContext * context, const osi3::Streaming *request, google::protobuf::Empty *response),
+              (grpc::ServerContext * context, const google::protobuf::Empty *request, osi3::Streaming *response),
               (override));
 };

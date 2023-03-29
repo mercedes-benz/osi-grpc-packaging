@@ -15,9 +15,9 @@ package osi3.grpc;
 import "google/protobuf/empty.proto";
 import "osi_streaming.proto";
 
-// Scenario: The simulation (client) sends a symmetric delta to the application
-// (server, e.g. a graphics engine)
+// Scenario: The application (client, e.g. a graphics engine) requests a
+// symmetric delta from the simulation (server)
 service SymmetricDelta {
     // Client unary RPC
-    rpc SymmetricDelta(osi3.Streaming) returns (google.protobuf.Empty);
+    rpc SymmetricDelta(google.protobuf.Empty) returns (osi3.Streaming);
 }
