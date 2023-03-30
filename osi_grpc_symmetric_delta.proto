@@ -1,0 +1,23 @@
+//------------------------------------------------------------------------------
+// Copyright (c) 2023, MBition GmbH
+//
+// This program and the accompanying materials are made
+// available under the terms of the Mozilla Public License Version 2.0
+// which is available at https://www.mozilla.org/en-US/MPL/2.0/
+//
+// SPDX-License-Identifier: MPL-2.0
+//------------------------------------------------------------------------------
+
+syntax = "proto3";
+
+package osi3.grpc;
+
+import "google/protobuf/empty.proto";
+import "osi_streaming.proto";
+
+// Scenario: The application (client, e.g. a graphics engine) requests a
+// symmetric delta from the simulation (server)
+service SymmetricDelta {
+    // Client unary RPC
+    rpc SymmetricDelta(google.protobuf.Empty) returns (osi3.Streaming);
+}

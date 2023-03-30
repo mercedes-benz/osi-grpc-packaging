@@ -1,0 +1,41 @@
+---
+parse:
+  additional_commands:
+    protobuf_generate_cpp:
+      kwargs:
+        PROTOS: "*"
+        IMPORT_DIRS: "*"
+        LANGUAGE: "*"
+        PLUGIN: "*"
+        GENERATE_EXTENSIONS: "*"
+    configure_package_config_file:
+      flags:
+        - NO_SET_AND_CHECK_MACRO
+        - NO_CHECK_REQUIRED_COMPONENTS_MACRO
+      kwargs:
+        INSTALL_DESTINATION: "*"
+        PATH_VARS: "*"
+        INSTALL_PREFIX: "*"
+    find_dependency:
+      flags:
+        - CONFIG
+        - QUIET
+        - REQUIRED
+      kwargs:
+        COMPONENTS: "*"
+    gtest_discover_tests:
+      flags:
+        - NO_PRETTY_TYPES
+        - NO_PRETTY_VALUES
+      kwargs:
+        EXTRA_ARGS: "*"
+        WORKING_DIRECTORY: "*"
+        TEST_PREFIX: "*"
+        TEST_SUFFIX: "*"
+        PROPERTIES: "*"
+        TEST_LIST: "*"
+        DISCOVERY_TIMEOUT: "*"
+format:
+  line_width: 120
+markup:
+  first_comment_is_literal: true

@@ -1,0 +1,72 @@
+//------------------------------------------------------------------------------
+// Copyright (c) 2023, MBition GmbH
+//
+// This program and the accompanying materials are made
+// available under the terms of the Mozilla Public License Version 2.0
+// which is available at https://www.mozilla.org/en-US/MPL/2.0/
+//
+// SPDX-License-Identifier: MPL-2.0
+//------------------------------------------------------------------------------
+
+syntax = "proto3";
+
+package osi3;
+
+import "osi_common.proto";
+import "osi_version.proto";
+
+message ApplicationControl {
+    message Meta {
+        InterfaceVersion version = 1;
+        Timestamp timestamp = 2;
+        uint32 sender_id = 3;
+        uint32 receiver_id = 4;
+    }
+
+    message Command {
+        enum CommandType {
+            COMMAND_TYPE_UNKNOWN = 0;
+            COMMAND_TYPE_OTHER = 1;
+            COMMAND_TYPE_INITIALIZE = 2;
+            COMMAND_TYPE_START = 3;
+            COMMAND_TYPE_PAUSE = 4;
+            COMMAND_TYPE_STOP = 5;
+        }
+
+        CommandType command = 1;
+    }
+
+    message State {
+        enum StateType {
+            STATE_TYPE_UNKNOWN = 0;
+            STATE_TYPE_OTHER = 1;
+            STATE_TYPE_INITIALIZED = 2;
+            STATE_TYPE_STARTED = 3;
+            STATE_TYPE_PAUSED = 4;
+            STATE_TYPE_STOPPED = 5;
+        }
+
+        StateType state = 1;
+    }
+
+    message Log {
+        enum LogLevel {
+            LOG_LEVEL_UNKNOWN = 0;
+            LOG_LEVEL_OTHER = 1;
+            LOG_LEVEL_TRACE = 2;
+            LOG_LEVEL_DEBUG = 3;
+            LOG_LEVEL_INFO = 4;
+            LOG_LEVEL_WARN = 5;
+            LOG_LEVEL_ERROR = 6;
+            LOG_LEVEL_CRITICAL = 7;
+        }
+
+        LogLevel log_level = 1;
+        string message = 2;
+    }
+
+    Meta meta = 1;
+    Command command = 2;
+    State state = 3;
+    Log log = 4;
+}

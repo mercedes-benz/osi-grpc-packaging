@@ -1,0 +1,51 @@
+{
+	"name": "C++",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			// NOTE temp workaround for docker v23, see https://github.com/microsoft/vscode-remote-release/issues/7958
+			"BUILDKIT_INLINE_CACHE": "0"
+		}
+	},
+	"capAdd": [
+		"SYS_PTRACE"
+	],
+	"securityOpt": [
+		"seccomp=unconfined"
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"cheshirekow.cmake-format",
+				"ms-vscode.cmake-tools",
+				"ms-vscode.cpptools",
+				"ms-vscode.live-server",
+				"plex.vscode-protolint",
+				"redhat.vscode-yaml",
+				"zxh404.vscode-proto3"
+			],
+			"settings": {
+				"C_Cpp.clang_format_path": "/usr/bin/clang-format-15",
+				"C_Cpp.codeAnalysis.clangTidy.enabled": true,
+				"C_Cpp.codeAnalysis.clangTidy.path": "/usr/bin/clang-tidy-15",
+				"C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
+				"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+				"cmake.exportCompileCommandsFile": true,
+				"cmake.generator": "Ninja",
+				"cmake.installPrefix": "${workspaceFolder}/build/prefix",
+				"editor.formatOnSave": true,
+				"editor.tabSize": 2,
+				"files.associations": {
+					".clang-format": "yaml",
+					".clang-tidy": "yaml",
+					".clangd": "yaml",
+					".cmake-format": "yaml",
+					"*.cmake.in": "cmake"
+				},
+				"files.insertFinalNewline": true,
+				"files.trimFinalNewlines": true,
+				"files.trimTrailingWhitespace": true
+			}
+		}
+	}
+}
